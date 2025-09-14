@@ -14,9 +14,11 @@
   "dependencies": {
     "@apollo/client": "^4.0.5",
     "@elastic/elasticsearch": "^9.1.1",
+    "@react-google-maps/api": "^2.20.7",
     "bcryptjs": "^3.0.2",
     "graphql": "^16.11.0",
     "graphql-yoga": "^5.15.2",
+    "jose": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
     "next": "15.5.3",
     "node-fetch": "^3.3.2",

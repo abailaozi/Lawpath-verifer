@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 interface FormData {
   email: string;
@@ -15,7 +15,6 @@ interface FormErrors {
 }
 
 export default function LoginPage() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -98,7 +97,9 @@ export default function LoginPage() {
       }
 
       // Login successful - redirect to verifier page
-      router.push("/verifier");
+      setTimeout(() => {
+        window.location.href = "/verifier";
+      }, 100);
     } catch (error) {
       console.error("Login error:", error);
       setErrors({

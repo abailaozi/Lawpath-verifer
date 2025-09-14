@@ -1,154 +1,154 @@
-# 单元测试指南
+# Unit Testing Guide
 
-## 🧪 测试覆盖范围
+## Test Coverage
 
-### **已创建的测试文件**
+### **Created Test Files**
 
-1. **`src/lib/__tests__/auth.test.ts`** - JWT 认证功能测试
-2. **`src/lib/__tests__/userRepo.test.ts`** - 用户数据访问层测试
-3. **`src/app/api/__tests__/register.test.ts`** - 注册 API 测试
-4. **`src/app/api/__tests__/login.test.ts`** - 登录 API 测试
-5. **`src/app/__tests__/register-page.test.tsx`** - 注册页面组件测试
-6. **`src/app/__tests__/login-page.test.tsx`** - 登录页面组件测试
+1. **`src/lib/__tests__/auth.test.ts`** - JWT authentication functionality tests
+2. **`src/lib/__tests__/userRepo.test.ts`** - User data access layer tests
+3. **`src/app/api/__tests__/register.test.ts`** - Registration API tests
+4. **`src/app/api/__tests__/login.test.ts`** - Login API tests
+5. **`src/app/__tests__/register-page.test.tsx`** - Registration page component tests
+6. **`src/app/__tests__/login-page.test.tsx`** - Login page component tests
 
-## 🚀 运行测试
+## Running Tests
 
-### **安装依赖**
+### **Install Dependencies**
 
 ```bash
 npm install --save-dev jest @types/jest @testing-library/react @testing-library/jest-dom @testing-library/user-event jest-environment-jsdom ts-jest
 ```
 
-### **运行所有测试**
+### **Run All Tests**
 
 ```bash
 npm test
 ```
 
-### **监听模式（开发时推荐）**
+### **Watch Mode (Recommended for Development)**
 
 ```bash
 npm run test:watch
 ```
 
-### **生成覆盖率报告**
+### **Generate Coverage Report**
 
 ```bash
 npm run test:coverage
 ```
 
-## 📊 测试类型
+## Test Types
 
-### **1. 单元测试 (Unit Tests)**
+### **1. Unit Tests**
 
-- **auth.test.ts**: JWT 签名和验证
-- **userRepo.test.ts**: 数据库操作函数
+- **auth.test.ts**: JWT signing and verification
+- **userRepo.test.ts**: Database operation functions
 
-### **2. API 测试 (Integration Tests)**
+### **2. API Tests (Integration Tests)**
 
-- **register.test.ts**: 注册 API 端点
-- **login.test.ts**: 登录 API 端点
+- **register.test.ts**: Registration API endpoints
+- **login.test.ts**: Login API endpoints
 
-### **3. 组件测试 (Component Tests)**
+### **3. Component Tests**
 
-- **register-page.test.tsx**: 注册页面 UI 交互
-- **login-page.test.tsx**: 登录页面 UI 交互
+- **register-page.test.tsx**: Registration page UI interactions
+- **login-page.test.tsx**: Login page UI interactions
 
-## 🎯 测试场景
+## Test Scenarios
 
-### **认证功能**
+### **Authentication Features**
 
-- ✅ JWT 令牌创建和验证
-- ✅ 无效令牌处理
-- ✅ 空令牌处理
+- JWT token creation and verification
+- Invalid token handling
+- Empty token handling
 
-### **用户管理**
+### **User Management**
 
-- ✅ 用户查找（存在/不存在）
-- ✅ 用户创建
-- ✅ 数据库错误处理
+- User lookup (exists/doesn't exist)
+- User creation
+- Database error handling
 
-### **API 端点**
+### **API Endpoints**
 
-- ✅ 成功注册
-- ✅ 重复用户注册
-- ✅ 缺少字段验证
-- ✅ 成功登录
-- ✅ 无效凭据
-- ✅ 服务器错误处理
+- Successful registration
+- Duplicate user registration
+- Missing field validation
+- Successful login
+- Invalid credentials
+- Server error handling
 
-### **UI 组件**
+### **UI Components**
 
-- ✅ 表单渲染
-- ✅ 输入验证
-- ✅ 错误显示
-- ✅ 成功提交
-- ✅ 加载状态
-- ✅ 用户交互
+- Form rendering
+- Input validation
+- Error display
+- Successful submission
+- Loading states
+- User interactions
 
-## 🔧 测试配置
+## Test Configuration
 
-### **Jest 配置** (`jest.config.js`)
+### **Jest Configuration** (`jest.config.js`)
 
-- Next.js 集成
-- TypeScript 支持
-- 路径别名映射
-- 测试环境设置
+- Next.js integration
+- TypeScript support
+- Path alias mapping
+- Test environment setup
 
-### **测试设置** (`src/setupTests.ts`)
+### **Test Setup** (`src/setupTests.ts`)
 
-- DOM 测试工具
-- Next.js 路由模拟
-- Fetch API 模拟
-- 环境变量设置
+- DOM testing utilities
+- Next.js router mocking
+- Fetch API mocking
+- Environment variable setup
 
-## 📈 覆盖率目标
+## Coverage Goals
 
-- **语句覆盖率**: > 90%
-- **分支覆盖率**: > 85%
-- **函数覆盖率**: > 90%
-- **行覆盖率**: > 90%
+- **Statement Coverage**: > 90%
+- **Branch Coverage**: > 85%
+- **Function Coverage**: > 90%
+- **Line Coverage**: > 90%
 
-## 🛠️ 添加新测试
+## Adding New Tests
 
-### **创建新测试文件**
+### **Create New Test File**
 
 ```bash
-# 在对应目录创建 __tests__ 文件夹
+# Create __tests__ folder in corresponding directory
 mkdir src/your-module/__tests__
 
-# 创建测试文件
+# Create test file
 touch src/your-module/__tests__/your-module.test.ts
 ```
 
-### **测试文件命名规范**
+### **Test File Naming Conventions**
 
-- 组件测试: `component-name.test.tsx`
-- 功能测试: `function-name.test.ts`
-- API 测试: `api-endpoint.test.ts`
+- Component tests: `component-name.test.tsx`
+- Function tests: `function-name.test.ts`
+- API tests: `api-endpoint.test.ts`
 
-## 🐛 调试测试
+## Debugging Tests
 
-### **运行特定测试**
+### **Run Specific Tests**
 
 ```bash
-# 运行特定文件
+# Run specific file
 npm test auth.test.ts
 
-# 运行特定测试套件
+# Run specific test suite
 npm test -- --testNamePattern="should create a valid JWT token"
 ```
 
-### **详细输出**
+### **Verbose Output**
 
 ```bash
 npm test -- --verbose
 ```
 
-## 📝 测试最佳实践
+## Testing Best Practices
 
-1. **AAA 模式**: Arrange, Act, Assert
-2. **描述性测试名称**: 清楚说明测试目的
-3. **单一职责**: 每个测试只验证一个功能
-4. **Mock 外部依赖**: 确保测试隔离
-5. **清理状态**: 每个测试后重置状态
+1. **AAA Pattern**: Arrange, Act, Assert
+2. **Descriptive Test Names**: Clearly describe test purpose
+3. **Single Responsibility**: Each test verifies one functionality
+4. **Mock External Dependencies**: Ensure test isolation
+5. **Clean State**: Reset state after each test

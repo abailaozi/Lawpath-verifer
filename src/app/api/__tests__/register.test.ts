@@ -6,7 +6,7 @@ import {
   RegisterSuccessResponse,
   RegisterErrorResponse,
   MockBcryptHash,
-} from "../../../__tests__/types";
+} from "@/types";
 
 // Mock dependencies
 jest.mock("@/lib/userRepo");

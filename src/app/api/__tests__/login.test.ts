@@ -7,7 +7,7 @@ import {
   LoginSuccessResponse,
   LoginErrorResponse,
   MockBcryptCompare,
-} from "../../../__tests__/types";
+} from "@/types";
 
 // Mock dependencies
 jest.mock("@/lib/userRepo");
@@ -40,7 +40,7 @@ describe("/api/login", () => {
 
       mockGetUserByUsername.mockResolvedValue(mockUser);
       mockBcryptCompare.mockResolvedValue(true);
-      mockSignToken.mockReturnValue("jwt-token");
+      mockSignToken.mockResolvedValue("jwt-token");
 
       const request = new Request("http://localhost:3000/api/login", {
         method: "POST",

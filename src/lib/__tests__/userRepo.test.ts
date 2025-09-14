@@ -4,7 +4,7 @@ import {
   MockUser,
   MockElasticsearchResponse,
   MockElasticsearchIndexResponse,
-} from "../../__tests__/types";
+} from "../../types";
 
 // Mock the elastic client
 jest.mock("../elastic", () => ({
