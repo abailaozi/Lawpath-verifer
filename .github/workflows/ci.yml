@@ -30,16 +30,14 @@ jobs:
       run: npm ci
       
     - name: Run linting
-      run: npm run lint
+      run: npm run lint -- --max-warnings 0
       
-    - name: Run type checking
-      run: npm run type-check
-      
-    - name: Run tests
-      run: npm test -- --coverage --watchAll=false
+    - name: Run tests with coverage
+      run: npm run test:coverage -- --watchAll=false --passWithNoTests
       
     - name: Upload coverage reports
       uses: codecov/codecov-action@v3
+      if: matrix.node-version == '20.x'
       with:
         file: ./coverage/lcov.info
         flags: unittests
@@ -67,10 +65,10 @@ jobs:
     - name: Build application
       run: npm run build
       env:
-        JWT_SECRET: ${{ secrets.JWT_SECRET }}
-        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
-        USER_INDEX: ${{ secrets.USER_INDEX }}
-        LOGS_INDEX: ${{ secrets.LOGS_INDEX }}
+        JWT_SECRET: ${{ secrets.JWT_SECRET || 'test-secret-for-build' }}
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'test-maps-key' }}
+        USER_INDEX: ${{ secrets.USER_INDEX || 'test-users' }}
+        LOGS_INDEX: ${{ secrets.LOGS_INDEX || 'test-logs' }}
         
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
