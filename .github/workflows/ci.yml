@@ -69,6 +69,8 @@ jobs:
         NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'test-maps-key' }}
         USER_INDEX: ${{ secrets.USER_INDEX || 'test-users' }}
         LOGS_INDEX: ${{ secrets.LOGS_INDEX || 'test-logs' }}
+        ELASTIC_NODE: ${{ secrets.ELASTIC_NODE || 'https://localhost:9200' }}
+        ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY || 'test-api-key' }}
         
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -77,22 +79,3 @@ jobs:
         path: .next/
         retention-days: 1
 
-  # Deploy
-  deploy:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: [test, build]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-args: '--prod'
-        working-directory: ./
