@@ -78,27 +78,32 @@ export default function RegisterPage() {
 
     const newErrors: FormErrors = {};
 
+    // Normalize input: trim whitespace and convert email to lowercase
+    const normalizedEmail = formData.email.trim().toLowerCase();
+    const normalizedPassword = formData.password.trim();
+    const normalizedConfirmPassword = formData.confirmPassword.trim();
+
     // Validate email
-    if (!formData.email) {
+    if (!normalizedEmail) {
       newErrors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
+    } else if (!validateEmail(normalizedEmail)) {
       newErrors.email = "Please enter a valid email address";
     }
 
     // Validate password
-    if (!formData.password) {
+    if (!normalizedPassword) {
       newErrors.password = "Password is required";
     } else {
-      const passwordValidationErrors = validatePassword(formData.password);
+      const passwordValidationErrors = validatePassword(normalizedPassword);
       if (passwordValidationErrors.length > 0) {
         newErrors.password = passwordValidationErrors[0]; // Show first error
       }
     }
 
     // Validate confirm password
-    if (!formData.confirmPassword) {
+    if (!normalizedConfirmPassword) {
       newErrors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
+    } else if (normalizedPassword !== normalizedConfirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
@@ -115,8 +120,8 @@ export default function RegisterPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: formData.email,
-          password: formData.password,
+          username: normalizedEmail,
+          password: normalizedPassword,
         }),
       });
 

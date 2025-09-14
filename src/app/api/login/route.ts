@@ -16,21 +16,36 @@ export async function POST(request: Request) {
       );
     }
 
-    const user = await getUserByUsername(username);
+    // Normalize input: trim whitespace and convert username to lowercase
+    const normalizedUsername = username.trim().toLowerCase();
+    const normalizedPassword = password.trim();
+
+    // Check if normalized values are not empty after trimming
+    if (!normalizedUsername || !normalizedPassword) {
+      return NextResponse.json(
+        { error: "Username and password cannot be empty" },
+        { status: 400 }
+      );
+    }
+
+    const user = await getUserByUsername(normalizedUsername);
     if (!user)
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 }
       );
 
-    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+    const isPasswordValid = await bcrypt.compare(
+      normalizedPassword,
+      user.passwordHash
+    );
     if (!isPasswordValid)
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 }
       );
 
-    const token = signToken(username);
+    const token = signToken(normalizedUsername);
     const res = NextResponse.json({ ok: true });
     res.cookies.set("auth_token", token, {
       httpOnly: true,

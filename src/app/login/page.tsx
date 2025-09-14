@@ -58,15 +58,19 @@ export default function LoginPage() {
 
     const newErrors: FormErrors = {};
 
+    // Normalize input: trim whitespace and convert email to lowercase
+    const normalizedEmail = formData.email.trim().toLowerCase();
+    const normalizedPassword = formData.password.trim();
+
     // Validate email
-    if (!formData.email) {
+    if (!normalizedEmail) {
       newErrors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
+    } else if (!validateEmail(normalizedEmail)) {
       newErrors.email = "Please enter a valid email address";
     }
 
     // Validate password
-    if (!formData.password) {
+    if (!normalizedPassword) {
       newErrors.password = "Password is required";
     }
 
@@ -83,8 +87,8 @@ export default function LoginPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: formData.email,
-          password: formData.password,
+          username: normalizedEmail,
+          password: normalizedPassword,
         }),
       });
 
