@@ -273,4 +273,11 @@ const yoga = createYoga({
   context: ({ request }) => ({ req: request }),
 });
 
-export { yoga as GET, yoga as POST };
+// Wrap the yoga instance in Next.js compatible handlers
+export async function GET(request: NextRequest) {
+  return yoga(request);
+}
+
+export async function POST(request: NextRequest) {
+  return yoga(request);
+}

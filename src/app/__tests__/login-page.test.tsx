@@ -65,7 +65,6 @@ describe("LoginPage", () => {
   });
 
   it("validates required fields", async () => {
-    const user = userEvent.setup();
     const { container } = render(<LoginPage />);
 
     const form = container.querySelector("form");
