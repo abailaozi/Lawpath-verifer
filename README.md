@@ -2,6 +2,8 @@
 
 A modern, secure address verification application built with Next.js, featuring user authentication, address validation using Australia Post API, and interactive Google Maps integration.
 
+🌐 **Live Demo**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
+
 ## Features
 
 ### Authentication System
@@ -79,11 +81,15 @@ A modern, secure address verification application built with Next.js, featuring 
    Create a `.env.local` file in the root directory:
 
    ```env
+   # Required Environment Variables
    JWT_SECRET=your-super-secret-jwt-key-here
    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
    USER_INDEX=users
    LOGS_INDEX=verification-logs
    ELASTICSEARCH_URL=your-elasticsearch-url
+
+   # Optional Environment Variables
+   NODE_ENV=development
    ```
 
 4. **Run the development server**
@@ -193,9 +199,27 @@ type ValidationResult {
 
 ### Vercel (Recommended)
 
+🌐 **Production Deployment**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
+
 1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
+2. Set the following environment variables in Vercel dashboard:
+   - `JWT_SECRET` - Your secure JWT signing secret
+   - `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` - Google Maps API key
+   - `USER_INDEX` - Elasticsearch users index name
+   - `LOGS_INDEX` - Elasticsearch logs index name
+   - `ELASTICSEARCH_URL` - Your Elasticsearch cluster URL
 3. Deploy automatically on push to main branch
+
+### Required Environment Variables for Production
+
+```env
+JWT_SECRET=your-production-jwt-secret-key
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+USER_INDEX=users
+LOGS_INDEX=verification-logs
+ELASTICSEARCH_URL=your-elasticsearch-production-url
+NODE_ENV=production
+```
 
 ### Other Platforms
 
