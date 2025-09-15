@@ -2,7 +2,7 @@
 
 A modern, secure address verification application built with Next.js, featuring user authentication, address validation using Australia Post API, and interactive Google Maps integration.
 
-🌐 **Live Demo**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
+**Live Demo**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
 
 ## Features
 
@@ -62,7 +62,7 @@ A modern, secure address verification application built with Next.js, featuring 
 - **Australia Post API** - Address validation service
 - **Google Maps API** - Interactive mapping service
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository**
 
@@ -101,7 +101,7 @@ A modern, secure address verification application built with Next.js, featuring 
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🧪 Testing
+## Testing
 
 ### Run all tests
 
@@ -127,7 +127,7 @@ npm run test:coverage
 - **Integration Tests**: API endpoint and database interaction testing
 - **UI Tests**: User interface and user interaction testing
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -199,7 +199,7 @@ type ValidationResult {
 
 ### Vercel (Recommended)
 
-🌐 **Production Deployment**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
+ **Production Deployment**: [https://lawpath-verifier.vercel.app/](https://lawpath-verifier.vercel.app/)
 
 1. Connect your GitHub repository to Vercel
 2. Set the following environment variables in Vercel dashboard:
@@ -234,7 +234,7 @@ NODE_ENV=production
 - **Bundle Size**: Optimized with Next.js automatic code splitting
 - **Caching**: Intelligent caching strategies for API responses
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
